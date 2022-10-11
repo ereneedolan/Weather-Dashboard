@@ -1,15 +1,27 @@
 // DEPENDENCIES (DOM ELEMENTS)
-
+//console.log("Hello")
 // DATA / STATE
 
-var apiKey = "fe8de900e4d58555c4e94cd5616c4b3d";
-var city = "";
+var searchBtn = $("#search-button") //document.getElementById("search-button")
+
+searchBtn.on("click", searchCity)
+
+
 
 // FUNCTIONS
 
+function searchCity() {
+var APIKey = "fe8de900e4d58555c4e94cd5616c4b3d";
+var city = "Detroit";
 var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey;
-
 fetch(queryURL)
+.then(function (res){
+    return res.json()
+})
+.then(function (data){
+    console.log(data)
+})
+}
 
 // USER INTERACTIONS
 // A user can click...
