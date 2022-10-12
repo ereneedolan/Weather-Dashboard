@@ -19,8 +19,22 @@ fetch(queryURL)
     return res.json()
 })
 .then(function (data){
+    
     console.log(data)
 })
+}
+
+function fiveDayForecast(data){
+    var APIKey = "fe8de900e4d58555c4e94cd5616c4b3d";
+    var city = "Detroit";
+    var queryURL = "api.openweathermap.org/data/2.5/forecast?lat="+lat+"lon="+lon+"&appid=" + APIKey;
+    fetch(queryURL)
+    .then(function (res){
+    return res.json()
+    })
+    .then(function (data){
+    console.log(data)
+    })
 }
 
 // USER INTERACTIONS
