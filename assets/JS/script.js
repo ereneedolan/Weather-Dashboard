@@ -19,8 +19,10 @@ fetch(queryURL)
     return res.json()
 })
 .then(function (data){
-    
-    console.log(data)
+    temperature.text.content = data.content
+    temperature.text.content = data.content
+    temperature.text.content = data.content
+    //console.log(data)
 })
 }
 
@@ -33,7 +35,10 @@ function fiveDayForecast(data){
     return res.json()
     })
     .then(function (data){
-    console.log(data)
+        temperature.text.content = data.content
+        temperature.text.content = data.content
+        temperature.text.content = data.content
+  
     })
 }
 
