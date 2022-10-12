@@ -31,26 +31,30 @@ fetch(queryURL)
     return res.json()
 })
 .then(function (data){
-    temperature.text.content = data.content
-    wind.text.content = data.content
-    humidity.text.content = data.content
-    //console.log(data)
+    temperature.textContent = data.main.temp
+    wind.textContent = data.wind
+    humidity.textContent = data.main.humidity
+    console.log(data)
+    fiveDayForecast(data.coord.lat, data.coord.lon)
 })
 }
 
-function fiveDayForecast(data){
+function fiveDayForecast(lat,lon){
+    console.log(lat, lon)
     var APIKey = "fe8de900e4d58555c4e94cd5616c4b3d";
     var city = "Detroit";
-    var queryURL = "api.openweathermap.org/data/2.5/forecast?lat="+lat+"lon="+lon+"&appid=" + APIKey;
+    var queryURL = "https://api.openweathermap.org/data/2.5/forecast?lat="+lat+"&lon="+lon+"&appid="+APIKey+"";
     fetch(queryURL)
     .then(function (res){
     return res.json()
     })
     .then(function (data){
-        temperature.text.content = data.content
-        wind.text.content = data.content
-        humidity.text.content = data.content
-  
+    
+        for( i=0; i < data.list.length; i+=8 ){
+            var daily = data.list[i]
+            console.log(daily)
+    }
+        
     })
 }
 
