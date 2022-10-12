@@ -5,6 +5,18 @@
 var searchBtn = $("#search-button") //document.getElementById("search-button")
 
 searchBtn.on("click", searchCity)
+//need to store searchCity history in local storage and display search history
+
+
+// function createItem() {
+// 	localStorage.setItem('nameOfItem', 'value'); 
+// } 
+// createItem() // Creates a item named 'nameOfItem' and stores a value of 'value'
+
+// function getValue() {
+// 	return localStorage.getItem('nameOfItem');  
+// } // Gets the value of 'nameOfItem' and returns it
+// console.log(getValue()); //'value';
 
 
 
@@ -20,8 +32,8 @@ fetch(queryURL)
 })
 .then(function (data){
     temperature.text.content = data.content
-    temperature.text.content = data.content
-    temperature.text.content = data.content
+    wind.text.content = data.content
+    humidity.text.content = data.content
     //console.log(data)
 })
 }
@@ -36,8 +48,8 @@ function fiveDayForecast(data){
     })
     .then(function (data){
         temperature.text.content = data.content
-        temperature.text.content = data.content
-        temperature.text.content = data.content
+        wind.text.content = data.content
+        humidity.text.content = data.content
   
     })
 }
