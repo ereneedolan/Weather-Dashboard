@@ -25,14 +25,14 @@ searchBtn.on("click", searchCity)
 function searchCity() {
 var APIKey = "fe8de900e4d58555c4e94cd5616c4b3d";
 var city = "Detroit";
-var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey;
+var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=" + APIKey;
 fetch(queryURL)
 .then(function (res){
     return res.json()
 })
 .then(function (data){
     temperature.textContent = data.main.temp
-    wind.textContent = data.wind
+    wind.textContent = data.wind.speed
     humidity.textContent = data.main.humidity
     console.log(data)
     fiveDayForecast(data.coord.lat, data.coord.lon)
@@ -43,7 +43,7 @@ function fiveDayForecast(lat,lon){
     console.log(lat, lon)
     var APIKey = "fe8de900e4d58555c4e94cd5616c4b3d";
     var city = "Detroit";
-    var queryURL = "https://api.openweathermap.org/data/2.5/forecast?lat="+lat+"&lon="+lon+"&appid="+APIKey+"";
+    var queryURL = "https://api.openweathermap.org/data/2.5/forecast?lat="+lat+"&lon="+lon+"&units=imperial&appid="+APIKey+"";
     fetch(queryURL)
     .then(function (res){
     return res.json()
@@ -53,6 +53,8 @@ function fiveDayForecast(lat,lon){
         for( i=0; i < data.list.length; i+=8 ){
             var daily = data.list[i]
             console.log(daily)
+        var allDays = document.querySelectorAll(".fiveDay")
+        allDays[i/8].textContent= daily.main.temp
     }
         
     })
