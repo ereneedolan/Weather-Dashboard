@@ -17,7 +17,7 @@ Once the user enters the page as long as they don't clear their cache they will 
 
 The motivation behind the project was to give an user a clear dashboard to search weather and to see upcoming weather.
 
-Creating this project I learned how to 
+Creating this project I learned how to fetch data from APIs and work to connect that with HTML and come up with a weather display.
 
 ## Table of Contents (Optional)
 
@@ -53,4 +53,4 @@ I am not looking for any contributors at this time.
 
 ## Tests
 
-Go the extra mile and write tests for your application. Then pr
+No tests needed for this application
