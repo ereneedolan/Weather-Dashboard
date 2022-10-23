@@ -1,0 +1,15 @@
+#navbar{
+    background: linear-gradient(208.8deg, #15015e33 16.56%, rgba(17, 4, 158, 0.148) 94.74%);
+    font-weight: bold;
+}
+
+#title{
+    color: white;
+}
+
+#search-button{
+    border-radius: 10%;
+    background-color: #0487e433;
+    color: white;
+}
+
