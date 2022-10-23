@@ -1,6 +1,8 @@
 // DEPENDENCIES (DOM ELEMENTS)
-//console.log("Hello")
+
 // DATA / STATE
+
+//moment.js format: moment().format('L');
 
 var searchBtn = $("#search-button") //document.getElementById("search-button")
 

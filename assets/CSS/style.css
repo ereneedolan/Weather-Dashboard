@@ -5,11 +5,26 @@
 
 #title{
     color: white;
+    justify-content: center;
 }
 
 #search-button{
     border-radius: 10%;
     background-color: #0487e433;
     color: white;
+}
+
+#search-history{
+    background-color: gray;
+}
+
+#day0Data, #day1Data, #day2Data, #day3Data, #day4Data {
+    color: white;
+    background-color: darkblue;
+}
+
+.cardFiveDay {
+    display: inline;
+
 }
 
