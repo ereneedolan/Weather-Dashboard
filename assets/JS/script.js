@@ -8,41 +8,55 @@ searchBtn.on("click", searchCity)
 //need to store searchCity history in local storage and display search history
 
 
-// function createItem() {
-// 	localStorage.setItem('nameOfItem', 'value'); 
-// } 
-// createItem() // Creates a item named 'nameOfItem' and stores a value of 'value'
+function createItem(city) {
+    var cities = JSON.parse(localStorage.getItem("cities"))||[]
+    cities.push(city)
+	localStorage.setItem('cities', JSON.stringify(cities)); 
+    var searchHistoryEl = $("#search-history")
+        var historyItem = $("<button>").text(city).addClass("btn").on("click", function(event){
+        currentDayForecast(event.target.textContent)    
+        })
+        searchHistoryEl.append(historyItem)
+} 
 
-// function getValue() {
-// 	return localStorage.getItem('nameOfItem');  
-// } // Gets the value of 'nameOfItem' and returns it
-// console.log(getValue()); //'value';
-
+function getValue() {
+	var cities = JSON.parse(localStorage.getItem("cities"))||[]
+    cities.forEach(function(city,i){
+        var searchHistoryEl = $("#search-history")
+        var historyItem = $("<button>").text(city).addClass("btn").on("click", function(event){
+        currentDayForecast(event.target.textContent)    
+        })
+        searchHistoryEl.append(historyItem)
+    })
+} 
+getValue()
 
 
 // FUNCTIONS
 
 function searchCity() {
-var APIKey = "fe8de900e4d58555c4e94cd5616c4b3d";
-var city = "Detroit";
-var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=" + APIKey;
-fetch(queryURL)
-.then(function (res){
-    return res.json()
-})
-.then(function (data){
-    temperature.textContent = data.main.temp
-    wind.textContent = data.wind.speed
-    humidity.textContent = data.main.humidity
-    console.log(data)
-    fiveDayForecast(data.coord.lat, data.coord.lon)
-})
+    var city = $("#search-input").val(); 
+    createItem(city)
+    currentDayForecast(city)
 }
-
+function currentDayForecast(city){
+    var APIKey = "fe8de900e4d58555c4e94cd5616c4b3d";
+    var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=" + APIKey;
+    fetch(queryURL)
+    .then(function (res){
+        return res.json()
+    })
+    .then(function (data){
+        temperature.textContent = data.main.temp
+        wind.textContent = data.wind.speed
+        humidity.textContent = data.main.humidity
+        console.log(data)
+        fiveDayForecast(data.coord.lat, data.coord.lon)
+    })
+}
 function fiveDayForecast(lat,lon){
     console.log(lat, lon)
     var APIKey = "fe8de900e4d58555c4e94cd5616c4b3d";
-    var city = "Detroit";
     var queryURL = "https://api.openweathermap.org/data/2.5/forecast?lat="+lat+"&lon="+lon+"&units=imperial&appid="+APIKey+"";
     fetch(queryURL)
     .then(function (res){
