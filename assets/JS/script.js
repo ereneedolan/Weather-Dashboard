@@ -70,7 +70,14 @@ function fiveDayForecast(lat,lon){
             var daily = data.list[i]
             console.log(daily)
         var allDays = document.querySelectorAll(".fiveDay")
-        allDays[i/8].textContent= daily.main.temp
+        var iconurl = "http://openweathermap.org/img/w/" + daily.weather[0].icon + ".png";
+        allDays[i/8].innerHTML = `
+        <img src="${iconurl}"></img>
+        <p>Temp: ${daily.main.temp}</p>
+        <p>Wind: ${daily.wind.speed}</p>
+        <p>Humidity: ${daily.main.humidity}</p>
+        `
+
     }
         
     })
