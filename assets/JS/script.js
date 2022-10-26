@@ -43,7 +43,7 @@ function searchCity() {
 }
 function currentDayForecast(city){
     var APIKey = "fe8de900e4d58555c4e94cd5616c4b3d";
-    var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=" + APIKey;
+    var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=" + APIKey;
     fetch(queryURL)
     .then(function (res){
         return res.json()
