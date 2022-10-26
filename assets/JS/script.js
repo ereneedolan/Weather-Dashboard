@@ -49,9 +49,11 @@ function currentDayForecast(city){
         return res.json()
     })
     .then(function (data){
+        document.querySelector("#city-name").textContent = city
         temperature.textContent = data.main.temp
         wind.textContent = data.wind.speed
         humidity.textContent = data.main.humidity
+        document.querySelector("#UV-index").textContent=0
         console.log(data)
         fiveDayForecast(data.coord.lat, data.coord.lon)
     })
@@ -72,12 +74,12 @@ function fiveDayForecast(lat,lon){
         var allDays = document.querySelectorAll(".fiveDay")
         var iconurl = "http://openweathermap.org/img/w/" + daily.weather[0].icon + ".png";
         allDays[i/8].innerHTML = `
+        <h3>${moment(daily.dt_txt).format('L')}</h3>
         <img src="${iconurl}"></img>
         <p>Temp: ${daily.main.temp}</p>
         <p>Wind: ${daily.wind.speed}</p>
         <p>Humidity: ${daily.main.humidity}</p>
         `
-
     }
         
     })
